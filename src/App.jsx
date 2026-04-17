@@ -287,8 +287,10 @@ export default function RentalInspectionApp() {
       tenant_signed: !!inspectionData.signatures.tenant,
       inspector_signed: !!inspectionData.signatures.inspector,
       general_notes: inspectionData.notes,
-      // Email fields for Zapier
+      // Email fields — separated for Zapier compatibility
       email_to: recipients.join(", "),
+      email_to_owner: emailTo ? emailTo.split(",")[0].trim() : "",
+      email_to_tenant: (emailTenant && property.tenantEmail) ? property.tenantEmail : "",
       email_cc: emailCc,
       email_subject: subject,
       email_body: buildEmailBody(),
